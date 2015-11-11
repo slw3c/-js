@@ -1,17 +1,14 @@
 (function($){
 	$.fn.mdater = function(config){
 		var defaults = {
-			//roomId:roomId,
-			//maxDate : new Date(2015,10,11),
+		
 			maxDate : null,
 			minDate : new Date(),
 			getData :null,
-			//datasDateList:datasDateList,
 			checkInDate:null,
 			checkOutDate:null
 		};
 		var option = $.extend(defaults, config);
-		//window.console && console.log(this);
 		var input = this;
 
 		//通用函数
@@ -65,17 +62,12 @@
 				this.initEvents();
 			},
 			renderHTML : function(){
-				//var $html = $('<div class="md_mask"></div><div class="md_panel"><div class="md_head"><div class="md_selectarea"><a class="md_prev change_year" href="javascript:void(0);">&lt;</a> <a class="md_headtext yeartag" href="javascript:void(0);"></a> <a class="md_next change_year" href="javascript:void(0);">&gt;</a></div><div class="md_selectarea"><a class="md_prev change_month" href="javascript:void(0);">&lt;</a> <a class="md_headtext monthtag" href="javascript:void(0);">月</a> <a class="md_next change_month" href="javascript:void(0);">&gt;</a></div></div><div class="md_body"><ul class="md_weekarea"><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="md_datearea in"></ul></div><div class="md_foot"><a href="javascript:void(0);" class="md_ok">确定</a> <a href="javascript:void(0);" class="md_cancel">取消</a></div></div>');
 				var $html = $(
-					//'<div class="md_mask"></div><div class="md_panel">'+
-					//'<div class="appoint_choices"><span class="floatl date_sure md_ok">确定</span><span class="floatr date_cancel md_cancel">取消</span></div>'+
-					//'<ul class="calendar_title floatfix"><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li><li>日</li></ul>'+
-					//'<div><ul class="md_weekarea"><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul></div>'+
+				
 				'<div class="md_head"><div class="md_selectarea"><a class="md_headtext yeartag" href="javascript:void(0);"></a><a class="md_headtext monthtag" href="javascript:void(0);">月</a></div></div>'+
 				'<div class="md_body"><ul class="md_datearea in">'+
 				'<div class="md_next_head"><div class="md_selectarea"><a class="md_headtext yearsecondtag" href="javascript:void(0);"></a><a class="md_headtext monthsecondtag" href="javascript:void(0);">月</a></div></div>'+
 				'</ul>'+
-				//'</div>'+
 				'</div>');
 				if($('.md_head').length==0){$(".md_content").html($html);}
 				return $html;
@@ -85,7 +77,6 @@
 				$('.md_panel, .md_mask').addClass('show');
 			},
 			_hidePanel : function(){
-				//$('.md_panel, .md_mask').removeClass('show');
 				$('.md_panel, .md_mask').remove();
 				$('.shophome_time').remove();
 			},
@@ -351,21 +342,13 @@
 			input : null,//暂存当前指向input
 			initListeners : function(){
 				var _this = this;
-				//input.on('tap', function(e){
+				
 					_this.input = $(this);//暂存当前指向input
-					// if($('.md_mask').length){
-					// 	_this._hidePanel();
-					// }else{
+				
 						_this.renderHTML();
-						// var panel = $('.md_panel'),
-						// mask = $('.md_mask');
-						// _this.afterShowPanel(mask,panel);
-						//setTimeout(function () {
+					
 							_this._showPanel();
-						//}, 50);
-					//}
-				//});
-
+						
 			},
 			initEvents:function(){
 				var _this = this;
@@ -388,19 +371,9 @@
 						_this.value.date = $this.data('day');
 						//判断是否点击的是前一月或后一月的日期
 						var add = 0;
-						// if($this.hasClass('nextdate')){
-						// 	add = 1;
-						// }
-						// else if($this.hasClass('prevdate')){
-						// 	add = -1;
-						// }
-
-						// if(add !== 0){
-						// 	_this._changeMonth(add, _this.value.date);
-						// }
-						// else{
+					
 							
-							var currentIndex = $this.index();
+						var currentIndex = $this.index();
 					        var allLi = $this.parents(".md_panel").find("li");
 					        var hasCheckLength = $this.parents(".md_panel").find("li.one").length;
 					        
@@ -431,8 +404,7 @@
 					              _this._checkInShowFn($this);
 					             
 					            }
-							//$this.addClass('current').siblings('.current').removeClass('current');
-						//}
+						
 				});
 					
 				
